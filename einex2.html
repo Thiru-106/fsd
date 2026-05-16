@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freelance Hub - Find Top Talent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<script src="inex.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="inex.css">
+</head>
+<body>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo" onclick="showPage('home')">FreelanceHub</div>
+  <div class="nav-links">
+    <a onclick="showPage('browse')">Find Freelancers</a>
+    <a onclick="gatedPage('post-job')">Post a Job</a>
+    <a onclick="showPage('how')">How it Works</a>
+    <a onclick="showPage('pricing')">Pricing</a>
+    <a onclick="showPage('about')">About Us</a>
+  </div>
+  <div class="nav-cta" id="nav-auth-btns">
+    <button class="btn-ghost" onclick="showPage('login')">Log In</button>
+    <button class="btn-primary" onclick="showPage('signup')">Get Started</button>
+  </div>
+  <div id="nav-user-area">
+    <div class="nav-avatar" id="nav-avatar-circle" onclick="showPage('dashboard')"></div>
+    <span id="nav-user-name"></span>
+    <button class="nav-logout" onclick="logoutUser()">Sign out</button>
+  </div>
+</nav>
+
+<!-- ==================== HOME PAGE ==================== -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Hire <em>expert</em><br>freelancers,<br>fast.</h1>
+      <p>Connect with top-rated designers, developers, writers, and marketers. Quality work delivered on time — guaranteed.</p>
+      <div class="hero-actions">
+        <button class="btn-primary btn-large" onclick="showPage('browse')">Browse Talent</button>
+        <button class="btn-ghost btn-large" onclick="showPage('signup')">Become a Freelancer</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><h3>48k+</h3><p>Verified Freelancers</p></div>
+        <div class="stat-item"><h3>120k+</h3><p>Projects Completed</p></div>
+        <div class="stat-item"><h3>4.9★</h3><p>Avg. Client Rating</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Explore</div>
+    <h2 class="section-title">Browse by category</h2>
+    <div class="categories-grid">
+      <div class="cat-card" onclick="showPage('browse')"><div class="cat-icon">🎨</div><h4>Design & Creative</h4><span>4,230 experts</span></div>
+      <div class="cat-card" onclick="showPage('browse')"><div class="cat-icon">💻</div><h4>Development</h4><span>6,180 experts</span></div>
+      <div class="cat-card" onclick="showPage('browse')"><div class="cat-icon">✍️</div><h4>Writing</h4><span>3,100 experts</span></div>
+      <div class="cat-card" onclick="showPage('browse')"><div class="cat-icon">📈</div><h4>Marketing</h4><span>2,870 experts</span></div>
+      <div class="cat-card" onclick="showPage('browse')"><div class="cat-icon">🎬</div><h4>Video & Animation</h4><span>1,940 experts</span></div>
+      <div class="cat-card" onclick="showPage('browse')"><div class="cat-icon">🎵</div><h4>Music & Audio</h4><span>980 experts</span></div>
+      <div class="cat-card" onclick="showPage('browse')"><div class="cat-icon">📊</div><h4>Finance</h4><span>1,200 experts</span></div>
+      <div class="cat-card" onclick="showPage('browse')"><div class="cat-icon">🤝</div><h4>Consulting</h4><span>850 experts</span></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="section-label">Featured</div>
+    <h2 class="section-title">Top-rated freelancers</h2>
+    <div class="freelancers-grid" id="home-freelancers"></div>
+  </section>
+
+  <section class="section" style="background:var(--surface);padding-top:4rem;padding-bottom:4rem;">
+    <div class="section-label">Process</div>
+    <h2 class="section-title">How FreelanceHub works</h2>
+    <div class="how-grid">
+      <div class="how-step"><div class="step-number">01</div><h4>Post your project</h4><p>Describe your needs, set a budget, and publish in minutes.</p></div>
+      <div class="how-step"><div class="step-number">02</div><h4>Review proposals</h4><p>Browse portfolios and compare rates from talented freelancers.</p></div>
+      <div class="how-step"><div class="step-number">03</div><h4>Hire & collaborate</h4><p>Chat, share files, and manage milestones seamlessly.</p></div>
+      <div class="how-step"><div class="step-number">04</div><h4>Pay with confidence</h4><p>Funds held in escrow. Release only when 100% satisfied.</p></div>
+    </div>
+  </section>
+
+  <div class="cta-banner">
+    <div>
+      <h2>Ready to start your project?</h2>
+      <p>Join thousands of satisfied clients and find your perfect match today.</p>
+    </div>
+    <div style="display:flex;gap:1rem;flex-shrink:0;">
+      <button class="btn-ghost btn-large" onclick="showPage('browse')">Find Freelancers</button>
+      <button class="btn-primary btn-large" onclick="showPage('signup')">Post a Job — Free</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-brand">
+      <div class="logo" style="-webkit-text-fill-color:transparent;">FreelanceHub</div>
+      <p>The modern marketplace connecting world-class talent with innovative businesses.</p>
+    </div>
+    <div><h5>Marketplace</h5><ul><li><a onclick="showPage('browse')">Find Freelancers</a></li><li><a onclick="gatedPage('post-job')">Post a Project</a></li><li><a onclick="showPage('pricing')">Pricing Plans</a></li></ul></div>
+    <div><h5>Freelancers</h5><ul><li><a onclick="showPage('signup')">Create Profile</a></li><li><a onclick="showPage('browse')">Find Work</a></li></ul></div>
+    <div><h5>Company</h5><ul><li><a onclick="showPage('about')">About Us</a></li><li><a onclick="showPage('how')">How It Works</a></li></ul></div>
+  </footer>
+  <div class="footer-bottom">
+    <span>© 2026 FreelanceHub. All rights reserved.</span>
+    <span>Privacy · Terms · Cookies</span>
+  </div>
+</div>
+
+<!-- ==================== LOGIN PAGE ==================== -->
+<div class="page" id="page-login">
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="logo" onclick="showPage('home')">FreelanceHub</div>
+      <h2>Welcome back</h2>
+      <p class="subtitle">Sign in to your account to continue</p>
+      <div id="login-error" class="error-msg"></div>
+      <div style="background:rgba(124,109,250,0.08);border:1px solid rgba(124,109,250,0.25);border-radius:10px;padding:0.75rem 1rem;font-size:0.82rem;color:var(--muted);margin-bottom:1rem;">
+        🔑 <strong style="color:var(--accent);">Demo account:</strong> tiru@gmail.com &nbsp;/&nbsp; 12345678
+      </div>
+      <div class="form-group">
+        <label>Email address</label>
+        <input type="email" id="login-email" placeholder="you@example.com" onkeydown="if(event.key==='Enter')doLogin()">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="login-password" placeholder="Your password" onkeydown="if(event.key==='Enter')doLogin()">
+      </div>
+      <button class="btn-primary btn-block" onclick="doLogin()">Sign In</button>
+      <div class="divider">or continue with</div>
+      <div class="social-btns">
+        <button class="btn-social">🌐 Google</button>
+        <button class="btn-social">🐙 GitHub</button>
+      </div>
+      <div class="auth-footer">Don't have an account? <a onclick="showPage('signup')">Sign up free</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SIGNUP PAGE ==================== -->
+<div class="page" id="page-signup">
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="logo" onclick="showPage('home')">FreelanceHub</div>
+      <h2>Create account</h2>
+      <p class="subtitle">Join 50,000+ professionals on FreelanceHub</p>
+      <div id="signup-error" class="error-msg"></div>
+      <div id="signup-success" class="success-msg"></div>
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab(this,'client')">I'm a Client</div>
+        <div class="tab" onclick="switchTab(this,'freelancer')">I'm a Freelancer</div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>First name</label><input type="text" id="signup-fname" placeholder="Ravi"></div>
+        <div class="form-group"><label>Last name</label><input type="text" id="signup-lname" placeholder="Sharma"></div>
+      </div>
+      <div class="form-group">
+        <label>Email address</label>
+        <input type="email" id="signup-email" placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="signup-password" placeholder="Minimum 6 characters" oninput="checkStrength(this.value)">
+        <div class="strength-bar" id="strength-bar" style="display:none;"></div>
+        <div class="strength-label" id="strength-label" style="color:var(--muted);font-size:0.75rem;"></div>
+      </div>
+      <div class="form-group">
+        <label>Country</label>
+        <select id="signup-country">
+          <option>India</option><option>United States</option><option>United Kingdom</option>
+          <option>Germany</option><option>Singapore</option><option>Australia</option>
+        </select>
+      </div>
+      <button class="btn-primary btn-block" onclick="doSignup()">Create Free Account</button>
+      <div class="auth-footer">Already have an account? <a onclick="showPage('login')">Sign in</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BROWSE PAGE ==================== -->
+<div class="page" id="page-browse">
+  <div class="browse-header">
+    <h1>Find Freelancers</h1>
+    <div class="search-bar">
+      <input type="text" placeholder="🔍  Search skills, roles, or names…" id="search-input" oninput="filterCards()">
+      <select onchange="filterCards()" id="cat-filter">
+        <option value="">All Categories</option>
+        <option>Design & Creative</option><option>Development</option>
+        <option>Writing</option><option>Marketing</option><option>Video & Animation</option>
+      </select>
+      <select id="sort-filter" onchange="filterCards()">
+        <option>Top Rated</option><option>Lowest Rate</option><option>Highest Rate</option>
+      </select>
+      <button class="btn-primary" style="padding:0.75rem 1.5rem;" onclick="filterCards()">Search</button>
+    </div>
+  </div>
+  <div class="browse-content">
+    <div class="filters">
+      <h5>Filters</h5>
+      <div class="filter-group">
+        <label>BUDGET / HOUR</label>
+        <div class="chip-group">
+          <button class="chip selected" onclick="selectChip(this)">Any</button>
+          <button class="chip" onclick="selectChip(this)">Under ₹2,000</button>
+          <button class="chip" onclick="selectChip(this)">₹2,000 – ₹5,000</button>
+          <button class="chip" onclick="selectChip(this)">₹5,000+</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <label>BADGE</label>
+        <div class="chip-group">
+          <button class="chip selected" onclick="selectChip(this)">Any</button>
+          <button class="chip" onclick="selectChip(this)">✦ Pro Only</button>
+          <button class="chip" onclick="selectChip(this)">🌱 Rising</button>
+        </div>
+      </div>
+    </div>
+    <div class="results-grid" id="browse-results"></div>
+  </div>
+</div>
+
+<!-- ==================== PROFILE PAGE ==================== -->
+<div class="page" id="page-profile">
+  <div class="profile-page">
+    <div class="profile-hero">
+      <div class="profile-avatar" id="prof-avatar" style="background:linear-gradient(135deg,#7c6dfa,#5a4fd6);">RS</div>
+      <div class="profile-info">
+        <h2 id="prof-name">L2</h2>
+        <p class="role" id="prof-role">UI/UX Designer · Brand Identity Specialist</p>
+        <div class="profile-meta">
+          <span>📍 Mumbai, India</span>
+          <span id="prof-rating-meta">⭐ 4.97 (142 reviews)</span>
+          <span>🕐 Usually responds in 2 hrs</span>
+          <span>✅ ID Verified</span>
+        </div>
+      </div>
+      <div class="profile-actions">
+        <button class="btn-ghost" onclick="showToast('💬 Messaging coming soon!','success')">💬 Message</button>
+        <button class="btn-primary" id="hire-btn" onclick="gatedPage('post-job')">Hire Now</button>
+      </div>
+    </div>
+
+    <div class="profile-grid">
+      <div class="profile-sidebar">
+        <div class="info-card">
+          <h5>Quick Info</h5>
+          <div class="info-row"><span>Hourly Rate</span><span id="prof-rate" style="font-family:'Syne',sans-serif;font-weight:700;">₹4,500/hr</span></div>
+          <div class="info-row"><span>Jobs Done</span><span>218</span></div>
+          <div class="info-row"><span>On Time</span><span style="color:var(--accent3)">98%</span></div>
+          <div class="info-row"><span>Member Since</span><span>Mar 2021</span></div>
+          <div class="info-row"><span>Availability</span><span style="color:var(--accent3)">● Available</span></div>
+        </div>
+        <div class="info-card">
+          <h5>Skills</h5>
+          <div id="prof-skills" style="display:flex;flex-wrap:wrap;gap:0.5rem;"></div>
+        </div>
+        <div class="info-card">
+          <h5>Languages</h5>
+          <div class="info-row"><span>English</span><span>Fluent</span></div>
+          <div class="info-row"><span>Hindi</span><span>Native</span></div>
+        </div>
+      </div>
+
+      <div class="profile-main">
+        <div class="info-card">
+          <h5>About</h5>
+          <p id="prof-bio" style="color:var(--muted);font-size:0.9rem;line-height:1.75;"></p>
+        </div>
+        <div class="info-card">
+          <h5>Portfolio</h5>
+          <div class="portfolio-grid">
+            <div class="portfolio-item"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#7c6dfa22,#7c6dfa55);">🎨</div></div>
+            <div class="portfolio-item"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#fa6d8a22,#fa6d8a55);">📱</div></div>
+            <div class="portfolio-item"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#6dfabc22,#6dfabc55);">🌐</div></div>
+            <div class="portfolio-item"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#f5c84222,#f5c84255);">🖥️</div></div>
+            <div class="portfolio-item"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#7c6dfa22,#fa6d8a44);">💎</div></div>
+            <div class="portfolio-item"><div class="portfolio-thumb" style="background:linear-gradient(135deg,#6dfabc22,#7c6dfa44);">🚀</div></div>
+          </div>
+        </div>
+        <div class="info-card" id="reviews-card">
+          <h5 id="reviews-heading">Reviews</h5>
+          <div id="reviews-list"></div>
+          <!-- Review form OR login prompt -->
+          <div id="review-form-area"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DASHBOARD ==================== -->
+<div class="page" id="page-dashboard">
+  <div class="dashboard-page">
+    <div class="dashboard-header">
+      <h1 id="dash-greeting">Good morning 👋</h1>
+      <p>Here's what's happening with your projects today.</p>
+    </div>
+    <div class="metrics">
+      <div class="metric-card"><div class="label">Active Projects</div><div class="value">4</div><div class="change up">↑ 1 this week</div></div>
+      <div class="metric-card"><div class="label">Total Spent</div><div class="value">₹2.4L</div><div class="change up">↑ 12% vs last month</div></div>
+      <div class="metric-card"><div class="label">Hired Freelancers</div><div class="value">11</div><div class="change up">↑ 3 new</div></div>
+      <div class="metric-card"><div class="label">Avg. Rating Given</div><div class="value">4.8★</div><div class="change">Based on 18 reviews</div></div>
+    </div>
+    <div class="dashboard-grid">
+      <div class="dash-card">
+        <h5>Active Projects</h5>
+        <div class="job-row"><div><div class="job-title">E-commerce Website Redesign</div><div style="color:var(--muted);font-size:0.78rem;margin-top:0.2rem;">L2 · Due Jan 30</div></div><span class="job-status status-active">Active</span></div>
+        <div class="job-row"><div><div class="job-title">Mobile App Development</div><div style="color:var(--muted);font-size:0.78rem;margin-top:0.2rem;">Karan Dev · Due Feb 5</div></div><span class="job-status status-active">Active</span></div>
+        <div class="job-row"><div><div class="job-title">Brand Identity Package</div><div style="color:var(--muted);font-size:0.78rem;margin-top:0.2rem;">Priya · Due Jan 28</div></div><span class="job-status status-pending">Review</span></div>
+        <div class="job-row"><div><div class="job-title">SEO Content Strategy</div><div style="color:var(--muted);font-size:0.78rem;margin-top:0.2rem;">Vikram · Completed</div></div><span class="job-status status-done">Done</span></div>
+      </div>
+      <div class="dash-card">
+        <h5>Recommended For You</h5>
+        <div id="dash-recommended"></div>
+        <button class="btn-ghost" style="width:100%;margin-top:1rem;" onclick="showPage('browse')">Browse All Talent</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== POST JOB ==================== -->
+<div class="page" id="page-post-job">
+  <div class="auth-page">
+    <div class="auth-card" style="max-width:600px;">
+      <div class="logo" onclick="showPage('home')">FreelanceHub</div>
+      <h2>Post a Job</h2>
+      <p class="subtitle">Tell us what you need. Freelancers will apply.</p>
+      <div class="form-group"><label>Job Title</label><input type="text" id="job-title" placeholder="e.g. Build a React Website"></div>
+      <div class="form-group"><label>Category</label>
+        <select id="job-cat"><option>Development</option><option>Design & Creative</option><option>Writing</option><option>Marketing</option></select>
+      </div>
+      <div class="form-group"><label>Budget (₹)</label><input type="number" id="job-budget" placeholder="e.g. 5000"></div>
+      <div class="form-group"><label>Job Description</label>
+        <textarea id="job-desc" rows="5" placeholder="Describe your project in detail…" style="width:100%;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0.75rem 1rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;resize:vertical;"></textarea>
+      </div>
+      <div class="form-group"><label>Skills Required</label><input type="text" id="job-skills" placeholder="e.g. React, Node.js, UI Design"></div>
+      <button class="btn-primary btn-block" onclick="submitJob()">Post Job</button>
+      <div class="auth-footer"><a onclick="showPage('home')">← Back to Home</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PRICING ==================== -->
+<div class="page" id="page-pricing">
+  <div class="section">
+    <div class="section-label">Plans</div>
+    <h2 class="section-title">Simple, transparent pricing</h2>
+    <p style="color:var(--muted);max-width:600px;margin-bottom:3rem;line-height:1.75;">No hidden fees. No surprise charges. Start free and upgrade only when you're ready to scale.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;">
+
+      <!-- Free -->
+      <div class="cat-card" style="gap:0;">
+        <div style="font-size:1.8rem;margin-bottom:0.6rem;">🌱</div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;">Free</h3>
+        <p style="color:var(--muted);margin:0.4rem 0 1rem;font-size:0.88rem;">Perfect to get started</p>
+        <h2 style="font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;letter-spacing:-1px;">₹0</h2>
+        <p style="color:var(--muted);font-size:0.78rem;margin-bottom:1.2rem;">per month, forever</p>
+        <ul style="margin:0 0 1.5rem;color:var(--muted);font-size:0.88rem;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+          <li>✔ Browse all freelancers</li>
+          <li>✔ Post up to 1 job</li>
+          <li>✔ Receive up to 3 proposals</li>
+          <li>✔ Basic messaging</li>
+          <li>✔ Secure escrow payments</li>
+          <li style="color:var(--border);">✗ Featured listings</li>
+          <li style="color:var(--border);">✗ Analytics dashboard</li>
+          <li style="color:var(--border);">✗ Priority support</li>
+        </ul>
+        <button class="btn-ghost btn-block" onclick="showPage('signup')">Get Started Free</button>
+      </div>
+
+      <!-- Pro -->
+      <div class="cat-card" style="border-color:var(--accent);gap:0;background:linear-gradient(160deg,rgba(124,109,250,0.07),var(--card) 60%);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.6rem;">
+          <span style="font-size:1.8rem;">🚀</span>
+          <span style="background:linear-gradient(135deg,var(--accent),#5a4fd6);color:#fff;font-size:0.72rem;font-weight:600;padding:0.2rem 0.7rem;border-radius:999px;">Most Popular</span>
+        </div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;">Pro</h3>
+        <p style="color:var(--muted);margin:0.4rem 0 1rem;font-size:0.88rem;">For growing businesses</p>
+        <h2 style="font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;letter-spacing:-1px;">₹999</h2>
+        <p style="color:var(--muted);font-size:0.78rem;margin-bottom:1.2rem;">per month, billed monthly</p>
+        <ul style="margin:0 0 1.5rem;color:var(--muted);font-size:0.88rem;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+          <li>✔ Everything in Free</li>
+          <li>✔ Unlimited job posts</li>
+          <li>✔ Unlimited proposals</li>
+          <li>✔ Featured job listings</li>
+          <li>✔ Advanced analytics</li>
+          <li>✔ Team collaboration (up to 5)</li>
+          <li>✔ Priority support (24h SLA)</li>
+          <li>✔ Custom contracts</li>
+        </ul>
+        <button class="btn-primary btn-block" onclick="gatedAction(()=>showToast('🚀 Upgrade feature coming soon!','success'))">Upgrade to Pro</button>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="cat-card" style="gap:0;">
+        <div style="font-size:1.8rem;margin-bottom:0.6rem;">🏢</div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;">Enterprise</h3>
+        <p style="color:var(--muted);margin:0.4rem 0 1rem;font-size:0.88rem;">For large teams & agencies</p>
+        <h2 style="font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;letter-spacing:-1px;">Custom</h2>
+        <p style="color:var(--muted);font-size:0.78rem;margin-bottom:1.2rem;">tailored to your needs</p>
+        <ul style="margin:0 0 1.5rem;color:var(--muted);font-size:0.88rem;list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+          <li>✔ Everything in Pro</li>
+          <li>✔ Unlimited team members</li>
+          <li>✔ Dedicated account manager</li>
+          <li>✔ Custom integrations & API</li>
+          <li>✔ SSO & advanced security</li>
+          <li>✔ Custom payment terms</li>
+          <li>✔ SLA guarantee</li>
+          <li>✔ White-label options</li>
+        </ul>
+        <button class="btn-ghost btn-block" onclick="gatedAction(()=>showToast('📩 Contact feature coming soon!','success'))">Contact Sales</button>
+      </div>
+    </div>
+
+    <!-- Trust badges -->
+    <div style="display:flex;flex-wrap:wrap;gap:2rem;margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border);">
+      <div style="display:flex;align-items:center;gap:0.5rem;color:var(--muted);font-size:0.88rem;"><span>🔒</span> Bank-grade encryption</div>
+      <div style="display:flex;align-items:center;gap:0.5rem;color:var(--muted);font-size:0.88rem;"><span>💳</span> Cancel anytime, no lock-in</div>
+      <div style="display:flex;align-items:center;gap:0.5rem;color:var(--muted);font-size:0.88rem;"><span>✅</span> 14-day money-back guarantee</div>
+      <div style="display:flex;align-items:center;gap:0.5rem;color:var(--muted);font-size:0.88rem;"><span>🧾</span> GST-compliant invoices</div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section" style="background:var(--surface);padding-top:4rem;padding-bottom:4rem;">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Frequently asked questions</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:1rem;max-width:960px;">
+      <div class="cat-card" style="cursor:default;">
+        <h4>Can I switch plans later?</h4>
+        <p style="color:var(--muted);font-size:0.88rem;line-height:1.7;">Yes — upgrade, downgrade, or cancel anytime from your account settings. Changes take effect on your next billing date.</p>
+      </div>
+      <div class="cat-card" style="cursor:default;">
+        <h4>Is there a fee on freelancer payments?</h4>
+        <p style="color:var(--muted);font-size:0.88rem;line-height:1.7;">A small 5% platform fee applies to all transactions on Free & Pro. Enterprise plans can negotiate custom rates with our sales team.</p>
+      </div>
+      <div class="cat-card" style="cursor:default;">
+        <h4>What payment methods are accepted?</h4>
+        <p style="color:var(--muted);font-size:0.88rem;line-height:1.7;">UPI, credit/debit cards (Visa, Mastercard, Amex), net banking, and bank transfers. Enterprise clients may also pay via invoice.</p>
+      </div>
+      <div class="cat-card" style="cursor:default;">
+        <h4>Do I need a card to sign up?</h4>
+        <p style="color:var(--muted);font-size:0.88rem;line-height:1.7;">No. The Free plan needs no payment info at all. Add a payment method only when you're ready to hire or upgrade.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== HOW IT WORKS ==================== -->
+<div class="page" id="page-how">
+  <section class="section">
+    <div class="section-label">Process</div>
+    <h2 class="section-title">How FreelanceHub Works</h2>
+    <p style="color:var(--muted);max-width:600px;margin-bottom:3rem;line-height:1.75;">Whether you're hiring or freelancing, we've made every step simple, safe, and fast.</p>
+
+    <!-- For Clients -->
+    <div class="section-label" style="margin-bottom:1rem;">For Clients</div>
+    <div class="how-grid" style="margin-bottom:3rem;">
+      <div class="how-step"><div class="step-number">01</div><div style="font-size:1.5rem;margin-bottom:0.6rem;">📋</div><h4>Post Your Project</h4><p>Describe your needs, set a budget and timeline. Takes less than 2 minutes. No upfront cost.</p></div>
+      <div class="how-step"><div class="step-number">02</div><div style="font-size:1.5rem;margin-bottom:0.6rem;">📬</div><h4>Review Proposals</h4><p>Browse portfolios, compare rates, and shortlist freelancers who match your requirements.</p></div>
+      <div class="how-step"><div class="step-number">03</div><div style="font-size:1.5rem;margin-bottom:0.6rem;">🤝</div><h4>Hire & Collaborate</h4><p>Chat, share files, and manage milestones in one place. Full transparency from start to finish.</p></div>
+      <div class="how-step"><div class="step-number">04</div><div style="font-size:1.5rem;margin-bottom:0.6rem;">🔐</div><h4>Pay Securely</h4><p>Funds held in escrow. Release payment only when you're 100% satisfied with the work.</p></div>
+    </div>
+
+    <!-- For Freelancers -->
+    <div class="section-label" style="margin-bottom:1rem;">For Freelancers</div>
+    <div class="how-grid">
+      <div class="how-step"><div class="step-number">01</div><div style="font-size:1.5rem;margin-bottom:0.6rem;">🙋</div><h4>Create Your Profile</h4><p>Showcase your skills, portfolio, and hourly rate. A strong profile takes 10 minutes and works 24/7.</p></div>
+      <div class="how-step"><div class="step-number">02</div><div style="font-size:1.5rem;margin-bottom:0.6rem;">🎯</div><h4>Apply to Jobs</h4><p>Browse curated listings matched to your skills. Submit personalised proposals and stand out.</p></div>
+      <div class="how-step"><div class="step-number">03</div><div style="font-size:1.5rem;margin-bottom:0.6rem;">💸</div><h4>Get Paid Reliably</h4><p>Complete milestones, deliver great work, and receive payment to your bank — no client chasing.</p></div>
+    </div>
+  </section>
+
+  <!-- Platform features -->
+  <section class="section" style="background:var(--surface);padding-top:4rem;padding-bottom:4rem;">
+    <div class="section-label">Features</div>
+    <h2 class="section-title">Everything built in</h2>
+    <div class="categories-grid">
+      <div class="cat-card"><div class="cat-icon">💬</div><h4>Real-time Messaging</h4><span>Chat, share files, align on revisions — all in one thread.</span></div>
+      <div class="cat-card"><div class="cat-icon">🔒</div><h4>Escrow Protection</h4><span>Funds held safely until work is approved. Zero risk.</span></div>
+      <div class="cat-card"><div class="cat-icon">⭐</div><h4>Verified Reviews</h4><span>Every review is from a real completed project.</span></div>
+      <div class="cat-card"><div class="cat-icon">📊</div><h4>Milestone Tracking</h4><span>Break projects into milestones, pay as each is delivered.</span></div>
+      <div class="cat-card"><div class="cat-icon">🌐</div><h4>Multi-currency</h4><span>Pay in INR, USD, GBP, EUR and more. We handle conversion.</span></div>
+      <div class="cat-card"><div class="cat-icon">🛡️</div><h4>Dispute Resolution</h4><span>Our team steps in within 24 hours if anything goes wrong.</span></div>
+      <div class="cat-card"><div class="cat-icon">📱</div><h4>Mobile Friendly</h4><span>Manage projects and messages from any device, anywhere.</span></div>
+      <div class="cat-card"><div class="cat-icon">🤖</div><h4>Smart Matching</h4><span>AI-powered talent recommendations based on your project needs.</span></div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== ABOUT ==================== -->
+<div class="page" id="page-about">
+  <section class="section">
+    <div class="section-label">About</div>
+    <h2 class="section-title">About FreelanceHub</h2>
+    <p style="max-width:700px;color:var(--muted);line-height:1.8;font-size:1rem;margin-bottom:1rem;">FreelanceHub is a modern platform designed to connect talented freelancers with businesses around the world. Founded in 2021, our mission is to make hiring simple, fast, and reliable — while giving every freelancer a fair chance to grow their career.</p>
+    <p style="max-width:700px;color:var(--muted);line-height:1.8;font-size:1rem;margin-bottom:3rem;">Today, we power thousands of collaborations every month — from solo founders hiring their first designer, to enterprises building distributed teams across 40+ countries.</p>
+
+    <!-- Stats -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:3rem;">
+      <div class="cat-card" style="text-align:center;cursor:default;">
+        <h3 style="font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--accent);">48k+</h3>
+        <p style="color:var(--muted);font-size:0.85rem;">Verified Freelancers</p>
+      </div>
+      <div class="cat-card" style="text-align:center;cursor:default;">
+        <h3 style="font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--accent);">120k+</h3>
+        <p style="color:var(--muted);font-size:0.85rem;">Projects Completed</p>
+      </div>
+      <div class="cat-card" style="text-align:center;cursor:default;">
+        <h3 style="font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--accent);">40+</h3>
+        <p style="color:var(--muted);font-size:0.85rem;">Countries Reached</p>
+      </div>
+      <div class="cat-card" style="text-align:center;cursor:default;">
+        <h3 style="font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--accent);">4.9★</h3>
+        <p style="color:var(--muted);font-size:0.85rem;">Average Client Rating</p>
+      </div>
+    </div>
+
+    <!-- Values -->
+    <div class="section-label" style="margin-bottom:1rem;">Our Values</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-bottom:3rem;">
+      <div class="cat-card"><h4>🚀 Our Mission</h4><p style="color:var(--muted);font-size:0.9rem;">Empower freelancers and help businesses grow faster with the right talent.</p></div>
+      <div class="cat-card"><h4>🌍 Global Reach</h4><p style="color:var(--muted);font-size:0.9rem;">Connect with world-class talent across 40+ countries, with no borders.</p></div>
+      <div class="cat-card"><h4>🔒 Secure Payments</h4><p style="color:var(--muted);font-size:0.9rem;">Safe, reliable transactions with escrow protection on every project.</p></div>
+      <div class="cat-card"><h4>🤝 Trust First</h4><p style="color:var(--muted);font-size:0.9rem;">Every freelancer is verified. Every review is real. No shortcuts on safety.</p></div>
+      <div class="cat-card"><h4>⚡ Speed Matters</h4><p style="color:var(--muted);font-size:0.9rem;">Post a job in 2 minutes. Get proposals within hours. Move fast.</p></div>
+      <div class="cat-card"><h4>💡 Always Improving</h4><p style="color:var(--muted);font-size:0.9rem;">We ship weekly updates based on your feedback. Your voice shapes the product.</p></div>
+    </div>
+
+    <!-- Team -->
+    <div class="section-label" style="margin-bottom:1rem;">Our Team</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;">
+      <div class="cat-card" style="text-align:center;cursor:default;">
+        <div class="avatar" style="background:linear-gradient(135deg,#7c6dfa,#5a4fd6);width:52px;height:52px;border-radius:50%;margin:0 auto 0.8rem;font-size:1rem;">AT</div>
+        <h4>Arjun Teja</h4>
+        <p style="color:var(--accent);font-size:0.78rem;font-weight:600;margin:0.2rem 0;">CEO & Co-founder</p>
+        <p style="color:var(--muted);font-size:0.82rem;">Former product lead at Flipkart. Built 3 startups before FreelanceHub.</p>
+      </div>
+      <div class="cat-card" style="text-align:center;cursor:default;">
+        <div class="avatar" style="background:linear-gradient(135deg,#fa6d8a,#d64f7c);width:52px;height:52px;border-radius:50%;margin:0 auto 0.8rem;font-size:1rem;">SR</div>
+        <h4>Sneha Rao</h4>
+        <p style="color:var(--accent);font-size:0.78rem;font-weight:600;margin:0.2rem 0;">CTO & Co-founder</p>
+        <p style="color:var(--muted);font-size:0.82rem;">Ex-Google engineer. Passionate about scalable, delightful systems.</p>
+      </div>
+      <div class="cat-card" style="text-align:center;cursor:default;">
+        <div class="avatar" style="background:linear-gradient(135deg,#6dfabc,#3db87a);width:52px;height:52px;border-radius:50%;margin:0 auto 0.8rem;font-size:1rem;">VK</div>
+        <h4>Vikram Kumar</h4>
+        <p style="color:var(--accent);font-size:0.78rem;font-weight:600;margin:0.2rem 0;">Head of Design</p>
+        <p style="color:var(--muted);font-size:0.82rem;">Award-winning UX designer with a decade of craft across 4 continents.</p>
+      </div>
+      <div class="cat-card" style="text-align:center;cursor:default;">
+        <div class="avatar" style="background:linear-gradient(135deg,#f5c842,#d4a017);width:52px;height:52px;border-radius:50%;margin:0 auto 0.8rem;font-size:1rem;">PM</div>
+        <h4>Priya Menon</h4>
+        <p style="color:var(--accent);font-size:0.78rem;font-weight:600;margin:0.2rem 0;">Head of Growth</p>
+        <p style="color:var(--muted);font-size:0.82rem;">Growth hacker who scaled three SaaS products to 100k users.</p>
+      </div>
+    </div>
+  </section>
+</div>
+<style>
+     :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1c1c26;
+    --border: #2a2a38;
+    --accent: #7c6dfa;
+    --accent2: #fa6d8a;
+    --accent3: #6dfabc;
+    --text: #f0f0fa;
+    --muted: #7a7a99;
+    --gold: #f5c842;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+
+  /* NAV */
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; border-bottom: 1px solid var(--border); background: rgba(10,10,15,0.85); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; }
+  .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; cursor: pointer; }
+  .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; cursor: pointer; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { display: flex; gap: 1rem; align-items: center; }
+  .btn-ghost { background: none; border: 1px solid var(--border); color: var(--text); padding: 0.55rem 1.3rem; border-radius: 8px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; transition: all 0.2s; }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-primary { background: linear-gradient(135deg, var(--accent), #5a4fd6); border: none; color: #fff; padding: 0.55rem 1.4rem; border-radius: 8px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; transition: opacity 0.2s; }
+  .btn-primary:hover { opacity: 0.85; }
+  #nav-user-area { display:none; align-items:center; gap:0.8rem; }
+  .nav-avatar { width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;cursor:pointer;font-family:'Syne',sans-serif; }
+  #nav-user-name { font-size:0.88rem;color:var(--text); }
+  .nav-logout { background:none;border:none;color:var(--muted);cursor:pointer;font-size:0.85rem;font-family:'DM Sans',sans-serif;transition:color 0.2s; }
+  .nav-logout:hover { color:var(--accent2); }
+
+  /* PAGES */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* HERO */
+  .hero { padding: 7rem 4rem 5rem; position: relative; overflow: hidden; min-height: 90vh; display: flex; align-items: center; }
+  .hero::before { content:''; position:absolute; top:-120px; left:50%; transform:translateX(-30%); width:700px; height:700px; background:radial-gradient(circle,rgba(124,109,250,0.18) 0%,transparent 70%); pointer-events:none; }
+  .hero::after { content:''; position:absolute; bottom:-80px; right:-100px; width:500px; height:500px; background:radial-gradient(circle,rgba(250,109,138,0.12) 0%,transparent 70%); pointer-events:none; }
+  .hero-content { max-width:680px; position:relative; z-index:1; }
+  .hero h1 { font-family:'Syne',sans-serif; font-size:clamp(2.8rem,6vw,4.8rem); font-weight:800; line-height:1.08; letter-spacing:-2px; margin-bottom:1.5rem; animation:fadeUp 0.6s 0.1s ease both; }
+  .hero h1 em { font-style:normal; color:var(--accent); }
+  .hero p { font-size:1.15rem; color:var(--muted); line-height:1.7; margin-bottom:2.5rem; max-width:520px; animation:fadeUp 0.6s 0.2s ease both; }
+  .hero-actions { display:flex; gap:1rem; flex-wrap:wrap; animation:fadeUp 0.6s 0.3s ease both; }
+  .btn-large { padding:0.85rem 2rem; font-size:1rem; border-radius:10px; }
+  .hero-stats { display:flex; gap:3rem; margin-top:4rem; animation:fadeUp 0.6s 0.4s ease both; }
+  .stat-item h3 { font-family:'Syne',sans-serif; font-size:1.8rem; font-weight:700; }
+  .stat-item p { color:var(--muted); font-size:0.85rem; margin-top:0.2rem; }
+
+  /* SECTIONS */
+  .section { padding: 5rem 4rem; }
+  .section-label { font-size:0.75rem; letter-spacing:3px; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:1rem; }
+  .section-title { font-family:'Syne',sans-serif; font-size:clamp(1.8rem,3vw,2.6rem); font-weight:700; letter-spacing:-1px; margin-bottom:3rem; }
+
+  /* CATEGORIES */
+  .categories-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:1rem; }
+  .cat-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.5rem; cursor:pointer; transition:all 0.25s; display:flex; flex-direction:column; gap:0.8rem; }
+  .cat-card:hover { border-color:var(--accent); transform:translateY(-3px); box-shadow:0 12px 30px rgba(124,109,250,0.15); }
+  .cat-icon { font-size:1.8rem; }
+  .cat-card h4 { font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:600; }
+  .cat-card span { color:var(--muted); font-size:0.8rem; }
+
+  /* FREELANCER CARDS */
+  .freelancers-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.5rem; }
+  .freelancer-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:1.8rem; transition:all 0.25s; cursor:pointer; }
+  .freelancer-card:hover { border-color:rgba(124,109,250,0.4); transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.3); }
+  .fc-top { display:flex; align-items:flex-start; gap:1rem; margin-bottom:1.2rem; }
+  .avatar { width:52px; height:52px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; font-weight:700; font-family:'Syne',sans-serif; flex-shrink:0; }
+  .fc-info h4 { font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; }
+  .fc-info .role { color:var(--muted); font-size:0.82rem; margin-top:0.15rem; }
+  .badge { display:inline-flex; align-items:center; gap:0.3rem; font-size:0.72rem; padding:0.2rem 0.6rem; border-radius:999px; font-weight:500; margin-top:0.4rem; }
+  .badge-pro { background:rgba(245,200,66,0.15); color:var(--gold); border:1px solid rgba(245,200,66,0.3); }
+  .badge-new { background:rgba(109,250,188,0.12); color:var(--accent3); border:1px solid rgba(109,250,188,0.25); }
+  .fc-bio { color:var(--muted); font-size:0.85rem; line-height:1.6; margin-bottom:1.2rem; }
+  .fc-skills { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.4rem; }
+  .skill-tag { background:rgba(124,109,250,0.1); color:var(--accent); border:1px solid rgba(124,109,250,0.2); padding:0.25rem 0.7rem; border-radius:6px; font-size:0.75rem; }
+  .fc-footer { display:flex; align-items:center; justify-content:space-between; }
+  .rating { display:flex; align-items:center; gap:0.4rem; font-size:0.85rem; }
+  .stars { color:var(--gold); }
+  .rate { font-family:'Syne',sans-serif; font-weight:700; font-size:1.05rem; }
+  .rate span { font-size:0.75rem; color:var(--muted); font-family:'DM Sans',sans-serif; font-weight:400; }
+
+
+
+  .how-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem; }
+  .how-step { position:relative; padding:2rem 1.8rem; background:var(--card); border:1px solid var(--border); border-radius:16px; }
+  .step-number { font-family:'Syne',sans-serif; font-size:3rem; font-weight:800; color:rgba(124,109,250,0.15); line-height:1; margin-bottom:1rem; }
+  .how-step h4 { font-family:'Syne',sans-serif; font-size:1.05rem; font-weight:700; margin-bottom:0.6rem; }
+  .how-step p { color:var(--muted); font-size:0.88rem; line-height:1.65; }
+
+  /* CTA */
+  .cta-banner { margin:0 4rem 5rem; background:linear-gradient(135deg,rgba(124,109,250,0.2),rgba(250,109,138,0.15)); border:1px solid rgba(124,109,250,0.3); border-radius:24px; padding:4rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; position:relative; overflow:hidden; }
+  .cta-banner::before { content:''; position:absolute; top:-60px; right:-60px; width:300px; height:300px; background:radial-gradient(circle,rgba(250,109,138,0.15) 0%,transparent 70%); }
+  .cta-banner h2 { font-family:'Syne',sans-serif; font-size:2rem; font-weight:800; letter-spacing:-1px; }
+  .cta-banner p { color:var(--muted); margin-top:0.5rem; }
+
+  /* FOOTER */
+  footer { border-top:1px solid var(--border); padding:3rem 4rem 2rem; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; }
+  .footer-brand p { color:var(--muted); font-size:0.88rem; line-height:1.7; margin-top:0.8rem; max-width:260px; }
+  footer h5 { font-family:'Syne',sans-serif; font-weight:700; margin-bottom:1rem; font-size:0.9rem; }
+  footer ul { list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
+  footer ul li a { color:var(--muted); text-decoration:none; font-size:0.85rem; cursor:pointer; transition:color 0.2s; }
+  footer ul li a:hover { color:var(--text); }
+  .footer-bottom { border-top:1px solid var(--border); margin:0 4rem; padding:1.5rem 0; display:flex; justify-content:space-between; align-items:center; color:var(--muted); font-size:0.82rem; }
+
+  /* AUTH */
+  .auth-page { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:2rem; background:radial-gradient(ellipse at 30% 40%,rgba(124,109,250,0.12) 0%,transparent 60%),radial-gradient(ellipse at 70% 70%,rgba(250,109,138,0.08) 0%,transparent 60%); }
+  .auth-card { background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:2.8rem; width:100%; max-width:460px; box-shadow:0 30px 80px rgba(0,0,0,0.5); }
+  .auth-card .logo { display:block; margin-bottom:2rem; font-size:1.4rem; }
+  .auth-card h2 { font-family:'Syne',sans-serif; font-size:1.7rem; font-weight:800; letter-spacing:-0.5px; }
+  .auth-card .subtitle { color:var(--muted); font-size:0.9rem; margin-top:0.4rem; margin-bottom:2rem; }
+  .tabs { display:flex; background:var(--card); border-radius:10px; padding:4px; margin-bottom:2rem; }
+  .tab { flex:1; text-align:center; padding:0.6rem; border-radius:8px; cursor:pointer; font-size:0.88rem; color:var(--muted); transition:all 0.2s; }
+  .tab.active { background:var(--surface); color:var(--text); font-weight:500; box-shadow:0 2px 8px rgba(0,0,0,0.3); }
+  .form-group { margin-bottom:1.2rem; }
+  .form-group label { display:block; font-size:0.82rem; color:var(--muted); margin-bottom:0.4rem; font-weight:500; }
+  .form-group input, .form-group select { width:100%; background:var(--card); border:1px solid var(--border); color:var(--text); padding:0.75rem 1rem; border-radius:10px; font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; transition:border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus { border-color:var(--accent); }
+  .form-group select option { background:var(--card); }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .btn-block { width:100%; padding:0.85rem; font-size:0.95rem; border-radius:10px; }
+  .divider { text-align:center; color:var(--muted); font-size:0.82rem; margin:1.2rem 0; position:relative; }
+  .divider::before,.divider::after { content:''; position:absolute; top:50%; width:42%; height:1px; background:var(--border); }
+  .divider::before { left:0; } .divider::after { right:0; }
+  .social-btns { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:1.2rem; }
+  .btn-social { background:var(--card); border:1px solid var(--border); color:var(--text); padding:0.65rem; border-radius:10px; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:0.85rem; transition:all 0.2s; }
+  .btn-social:hover { border-color:var(--accent); }
+  .auth-footer { text-align:center; color:var(--muted); font-size:0.85rem; margin-top:1.5rem; }
+  .auth-footer a { color:var(--accent); cursor:pointer; }
+  .error-msg { background:rgba(250,109,138,0.1); border:1px solid rgba(250,109,138,0.3); color:var(--accent2); padding:0.7rem 1rem; border-radius:8px; font-size:0.85rem; margin-bottom:1rem; display:none; }
+  .success-msg { background:rgba(109,250,188,0.1); border:1px solid rgba(109,250,188,0.3); color:var(--accent3); padding:0.7rem 1rem; border-radius:8px; font-size:0.85rem; margin-bottom:1rem; display:none; }
+  .strength-bar { height:4px; border-radius:2px; margin-top:0.4rem; transition:all 0.3s; }
+  .strength-weak { background:var(--accent2); width:33%; }
+  .strength-medium { background:var(--gold); width:66%; }
+  .strength-strong { background:var(--accent3); width:100%; }
+  .strength-label { font-size:0.75rem; margin-top:0.3rem; }
+
+  /* BROWSE */
+  .browse-header { padding:3rem 4rem 2rem; background:var(--surface); border-bottom:1px solid var(--border); }
+  .browse-header h1 { font-family:'Syne',sans-serif; font-size:2rem; font-weight:800; margin-bottom:1.5rem; }
+  .search-bar { display:flex; gap:0.8rem; flex-wrap:wrap; }
+  .search-bar input { flex:1; min-width:200px; background:var(--card); border:1px solid var(--border); color:var(--text); padding:0.75rem 1rem; border-radius:10px; font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; transition:border-color 0.2s; }
+  .search-bar input:focus { border-color:var(--accent); }
+  .search-bar select { background:var(--card); border:1px solid var(--border); color:var(--text); padding:0.75rem 1rem; border-radius:10px; font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; cursor:pointer; }
+  .browse-content { display:flex; gap:2rem; padding:2rem 4rem; }
+  .filters { width:220px; flex-shrink:0; position:sticky; top:80px; height:fit-content; }
+  .filters h5 { font-family:'Syne',sans-serif; font-weight:700; margin-bottom:1.2rem; }
+  .filter-group { margin-bottom:1.5rem; }
+  .filter-group label { display:block; font-size:0.72rem; letter-spacing:2px; color:var(--muted); text-transform:uppercase; margin-bottom:0.7rem; }
+  .chip-group { display:flex; flex-direction:column; gap:0.4rem; }
+  .chip { background:var(--card); border:1px solid var(--border); color:var(--muted); padding:0.4rem 0.8rem; border-radius:8px; cursor:pointer; font-size:0.82rem; text-align:left; transition:all 0.2s; font-family:'DM Sans',sans-serif; }
+  .chip.selected,.chip:hover { border-color:var(--accent); color:var(--accent); background:rgba(124,109,250,0.08); }
+  .results-grid { flex:1; display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.5rem; align-content:start; }
+
+  /* PROFILE */
+  .profile-page { padding:3rem 4rem; max-width:1100px; margin:0 auto; }
+  .profile-hero { display:flex; align-items:flex-start; gap:2rem; margin-bottom:2.5rem; flex-wrap:wrap; }
+  .profile-avatar { width:90px; height:90px; border-radius:18px; display:flex; align-items:center; justify-content:center; font-size:2rem; font-weight:800; font-family:'Syne',sans-serif; flex-shrink:0; }
+  .profile-info { flex:1; }
+  .profile-info h2 { font-family:'Syne',sans-serif; font-size:1.8rem; font-weight:800; }
+  .profile-info .role { color:var(--muted); margin-top:0.3rem; }
+  .profile-meta { display:flex; gap:1.5rem; flex-wrap:wrap; margin-top:0.8rem; font-size:0.85rem; color:var(--muted); }
+  .profile-actions { display:flex; gap:0.8rem; flex-shrink:0; }
+  .profile-grid { display:grid; grid-template-columns:280px 1fr; gap:1.5rem; }
+  .profile-sidebar { display:flex; flex-direction:column; gap:1rem; }
+  .profile-main { display:flex; flex-direction:column; gap:1rem; }
+  .info-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.5rem; }
+  .info-card h5 { font-family:'Syne',sans-serif; font-weight:700; margin-bottom:1rem; font-size:1rem; }
+  .info-row { display:flex; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid var(--border); font-size:0.88rem; }
+  .info-row:last-child { border-bottom:none; }
+  .portfolio-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.8rem; }
+  .portfolio-item { border-radius:10px; overflow:hidden; aspect-ratio:4/3; }
+  .portfolio-thumb { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:2rem; }
+
+  /* REVIEWS */
+  .review-item { padding:1rem 0; border-bottom:1px solid var(--border); }
+  .review-item:last-child { border-bottom:none; }
+  .review-meta { display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; }
+  .reviewer { font-weight:500; font-size:0.88rem; }
+  .review-date { color:var(--muted); font-size:0.78rem; }
+  .review-text { color:var(--muted); font-size:0.85rem; line-height:1.65; }
+  .review-stars { color:var(--gold); font-size:0.9rem; }
+
+  /* REVIEW FORM */
+  .review-form-wrap { background:rgba(124,109,250,0.06); border:1px solid rgba(124,109,250,0.2); border-radius:12px; padding:1.2rem; margin-top:1rem; }
+  .review-form-wrap h6 { font-family:'Syne',sans-serif; font-weight:700; font-size:0.95rem; margin-bottom:1rem; color:var(--accent); }
+  .star-selector { display:flex; gap:0.3rem; margin-bottom:0.8rem; font-size:1.5rem; cursor:pointer; }
+  .star-selector span { color:var(--border); transition:color 0.15s; }
+  .star-selector span.active { color:var(--gold); }
+  .review-textarea { width:100%; background:var(--card); border:1px solid var(--border); color:var(--text); padding:0.75rem 1rem; border-radius:10px; font-family:'DM Sans',sans-serif; font-size:0.88rem; resize:vertical; outline:none; transition:border-color 0.2s; min-height:80px; }
+  .review-textarea:focus { border-color:var(--accent); }
+  .review-submit-row { display:flex; justify-content:flex-end; margin-top:0.7rem; }
+  .login-to-review { color:var(--muted); font-size:0.85rem; text-align:center; padding:1rem; background:var(--card); border-radius:10px; margin-top:1rem; }
+  .login-to-review a { color:var(--accent); cursor:pointer; }
+
+  /* DASHBOARD */
+  .dashboard-page { padding:3rem 4rem; }
+  .dashboard-header { margin-bottom:2rem; }
+  .dashboard-header h1 { font-family:'Syne',sans-serif; font-size:2rem; font-weight:800; }
+  .dashboard-header p { color:var(--muted); margin-top:0.3rem; }
+  .metrics { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin-bottom:2rem; }
+  .metric-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.5rem; }
+  .metric-card .label { color:var(--muted); font-size:0.82rem; margin-bottom:0.5rem; }
+  .metric-card .value { font-family:'Syne',sans-serif; font-size:1.8rem; font-weight:700; }
+  .metric-card .change { font-size:0.78rem; margin-top:0.3rem; color:var(--muted); }
+  .change.up { color:var(--accent3); }
+  .dashboard-grid { display:grid; grid-template-columns:1.5fr 1fr; gap:1.5rem; }
+  .dash-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.5rem; }
+  .dash-card h5 { font-family:'Syne',sans-serif; font-weight:700; margin-bottom:1.2rem; }
+  .job-row { display:flex; justify-content:space-between; align-items:center; padding:0.9rem 0; border-bottom:1px solid var(--border); font-size:0.88rem; }
+  .job-row:last-child { border-bottom:none; }
+  .job-title { font-weight:500; }
+  .job-status { padding:0.25rem 0.7rem; border-radius:6px; font-size:0.75rem; font-weight:500; }
+  .status-active { background:rgba(109,250,188,0.12); color:var(--accent3); }
+  .status-pending { background:rgba(245,200,66,0.12); color:var(--gold); }
+  .status-done { background:rgba(124,109,250,0.12); color:var(--accent); }
+
+  /* TOAST */
+  #toast { position:fixed; bottom:2rem; left:50%; transform:translateX(-50%) translateY(100px); background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:0.9rem 1.5rem; font-size:0.9rem; z-index:9999; transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1); box-shadow:0 20px 60px rgba(0,0,0,0.5); white-space:nowrap; }
+  #toast.show { transform:translateX(-50%) translateY(0); }
+  #toast.toast-success { border-color:rgba(109,250,188,0.4); color:var(--accent3); }
+  #toast.toast-error { border-color:rgba(250,109,138,0.4); color:var(--accent2); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+
+  /* RESPONSIVE */
+  @media(max-width:768px) {
+    nav { padding:1rem 1.5rem; }
+    .hero, .section { padding-left:1.5rem; padding-right:1.5rem; }
+    .nav-links { display:none; }
+    footer { grid-template-columns:1fr; }
+    .footer-bottom { margin:0 1.5rem; }
+    .cta-banner { margin:0 1.5rem 3rem; padding:2rem; }
+    .browse-content { flex-direction:column; padding:1.5rem; }
+    .filters { width:100%; position:static; }
+    .profile-page { padding:1.5rem; }
+    .profile-grid { grid-template-columns:1fr; }
+    .dashboard-page { padding:1.5rem; }
+    .dashboard-grid { grid-template-columns:1fr; }
+    .browse-header { padding:2rem 1.5rem 1.5rem; }
+  }
+
+</style>
+<script>
+// ══════════════════════════════════════════════
+//  DATA
+// ══════════════════════════════════════════════
+const freelancers = [
+  { id:1, name:"L2", role:"UI/UX Designer", bio:"7 years crafting user-centred digital experiences for startups and enterprises. Passionate about bridging business goals with human needs through thoughtful design.", skills:["Figma","Branding","Prototyping","UX Research","Framer"], rate:"₹4,500", rateNum:4500, rating:4.97, reviews:142, badge:"pro", avatar:"RS", color:"linear-gradient(135deg,#7c6dfa,#5a4fd6)", category:"Design & Creative" },
+  { id:2, name:"Karan Dev", role:"Full-Stack Developer", bio:"React & Node specialist. Delivered 180+ production apps with clean, scalable code. Expert in modern JavaScript ecosystems.", skills:["React","Node.js","PostgreSQL","TypeScript"], rate:"₹5,200", rateNum:5200, rating:4.93, reviews:98, badge:"pro", avatar:"KD", color:"linear-gradient(135deg,#fa6d8a,#d64f7c)", category:"Development" },
+  { id:3, name:"Priya N", role:"Brand Designer", bio:"Visual storyteller turning brand visions into iconic identities since 2019. Specialises in cohesive brand systems.", skills:["Illustrator","Brand Strategy","Motion","Logo Design"], rate:"₹3,800", rateNum:3800, rating:4.89, reviews:67, badge:"new", avatar:"PN", color:"linear-gradient(135deg,#6dfabc,#3db87a)", category:"Design & Creative" },
+  { id:4, name:"SAI K", role:"SEO & Content Writer", bio:"Data-driven content strategist helping brands rank on page one consistently. 5+ years in SEO and copywriting.", skills:["SEO","Copywriting","Analytics","Content Strategy"], rate:"₹2,200", rateNum:2200, rating:4.85, reviews:211, badge:"pro", avatar:"SK", color:"linear-gradient(135deg,#f5c842,#d4a017)", category:"Writing" },
+  { id:5, name:"Sneha I", role:"Motion Designer", bio:"After Effects wizard bringing brands to life through cinematic animations and micro-interactions.", skills:["After Effects","Premiere","Lottie","Cinema 4D"], rate:"₹4,100", rateNum:4100, rating:4.91, reviews:54, badge:"new", avatar:"SI", color:"linear-gradient(135deg,#fa6d8a,#7c6dfa)", category:"Video & Animation" },
+  { id:6, name:"Vikram P", role:"Digital Marketer", bio:"Performance marketer scaling D2C brands with ROI-focused paid campaigns across Meta, Google, and emerging channels.", skills:["Meta Ads","Google Ads","Analytics","Growth Hacking"], rate:"₹3,500", rateNum:3500, rating:4.88, reviews:89, badge:"pro", avatar:"VP", color:"linear-gradient(135deg,#6dfabc,#7c6dfa)", category:"Marketing" },
+];
+
+// ══════════════════════════════════════════════
+//  AUTH — in-memory user store (sessionStorage backed)
+// ══════════════════════════════════════════════
+let currentUser = null; // { name, email, initials }
+let userAccounts = JSON.parse(sessionStorage.getItem('fh_accounts') || '[]');
+// Always ensure the demo account is present and correct (remove stale version, re-add fresh)
+userAccounts = userAccounts.filter(u => u.email !== 'tiru@gmail.com');
+userAccounts.push({ name:'Tiru L2', email:'tiru@gmail.com', password:'12345678', initials:'TL' });
+sessionStorage.setItem('fh_accounts', JSON.stringify(userAccounts));
+
+function saveAccounts() { sessionStorage.setItem('fh_accounts', JSON.stringify(userAccounts)); }
+
+function doLogin() {
+  const email = document.getElementById('login-email').value.trim().toLowerCase();
+  const password = document.getElementById('login-password').value;
+  const errEl = document.getElementById('login-error');
+  errEl.style.display = 'none';
+
+  if (!email || !password) { showError(errEl, '⚠️ Please fill in all fields.'); return; }
+
+  const user = userAccounts.find(u => u.email === email && u.password === password);
+  if (!user) { showError(errEl, '❌ Incorrect email or password. Try: tiru@gmail.com / 12345678'); return; }
+
+  loginSuccess(user);
+}
+
+function doSignup() {
+  const fname = document.getElementById('signup-fname').value.trim();
+  const lname = document.getElementById('signup-lname').value.trim();
+  const email = document.getElementById('signup-email').value.trim().toLowerCase();
+  const password = document.getElementById('signup-password').value;
+  const country = document.getElementById('signup-country').value;
+  const errEl = document.getElementById('signup-error');
+  const succEl = document.getElementById('signup-success');
+  errEl.style.display = 'none'; succEl.style.display = 'none';
+
+  if (!fname || !lname) { showError(errEl, '⚠️ Please enter your full name.'); return; }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError(errEl, '⚠️ Please enter a valid email.'); return; }
+  if (password.length < 6) { showError(errEl, '⚠️ Password must be at least 6 characters.'); return; }
+  if (userAccounts.find(u => u.email === email)) { showError(errEl, '⚠️ An account with this email already exists.'); return; }
+
+  const initials = (fname[0] + lname[0]).toUpperCase();
+  const user = { name: fname + ' ' + lname, email, password, initials, country };
+  userAccounts.push(user);
+  saveAccounts();
+
+  succEl.textContent = '✅ Account created! Signing you in…';
+  succEl.style.display = 'block';
+  setTimeout(() => loginSuccess(user), 900);
+}
+
+function loginSuccess(user) {
+  currentUser = user;
+  sessionStorage.setItem('fh_loggedIn', JSON.stringify(user));
+  updateNavForUser();
+  // Update greeting
+  const hour = new Date().getHours();
+  const greet = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
+  document.getElementById('dash-greeting').textContent = greet + ', ' + user.name.split(' ')[0] + ' 👋';
+  showToast('🎉 Welcome back, ' + user.name.split(' ')[0] + '!', 'success');
+  showPage('dashboard');
+}
+
+function logoutUser() {
+  currentUser = null;
+  sessionStorage.removeItem('fh_loggedIn');
+  document.getElementById('nav-auth-btns').style.display = 'flex';
+  document.getElementById('nav-user-area').style.display = 'none';
+  showToast('👋 You have been signed out.', 'success');
+  showPage('home');
+}
+
+function updateNavForUser() {
+  if (!currentUser) return;
+  document.getElementById('nav-auth-btns').style.display = 'none';
+  document.getElementById('nav-user-area').style.display = 'flex';
+  document.getElementById('nav-avatar-circle').textContent = currentUser.initials || currentUser.name[0];
+  document.getElementById('nav-user-name').textContent = currentUser.name.split(' ')[0];
+}
+
+function showError(el, msg) { el.textContent = msg; el.style.display = 'block'; }
+
+function checkStrength(pw) {
+  const bar = document.getElementById('strength-bar');
+  const lbl = document.getElementById('strength-label');
+  bar.style.display = 'block';
+  if (pw.length < 4) { bar.className = 'strength-bar strength-weak'; lbl.textContent = 'Weak'; lbl.style.color = 'var(--accent2)'; }
+  else if (pw.length < 8) { bar.className = 'strength-bar strength-medium'; lbl.textContent = 'Medium'; lbl.style.color = 'var(--gold)'; }
+  else { bar.className = 'strength-bar strength-strong'; lbl.textContent = 'Strong'; lbl.style.color = 'var(--accent3)'; }
+}
+
+// ══════════════════════════════════════════════
+//  REVIEWS — stored per freelancer id
+// ══════════════════════════════════════════════
+let selectedStar = 0;
+let currentFreelancerId = 1;
+
+function getReviews(fid) {
+  const key = 'fh_reviews_' + fid;
+  const stored = sessionStorage.getItem(key);
+  if (stored) return JSON.parse(stored);
+  // Default reviews for freelancer 1
+  if (fid === 1) return [
+    { author:'Ankit Verma', company:'TechCo', stars:5, text:'Absolutely stunning work. L2 transformed our rough wireframes into a polished product that our users love. Professional, fast, and communicative throughout.', date:'Jan 2026' },
+    { author:'Sarah K.', company:'Bloom App', stars:5, text:'Second time hiring L2 and he continues to exceed expectations. Delivery was two days early and the designs were better than I imagined.', date:'Dec 2025' },
+    { author:'Marco Rossi', company:'Finova', stars:4, text:'Great experience overall. Very responsive and willing to iterate. Final deliverables were clean and well-documented.', date:'Nov 2025' },
+  ];
+  if (fid === 2) return [
+    { author:'Neha Gupta', company:'StartupXYZ', stars:5, text:'Karan delivered our app in record time. Clean code, great communication. Will hire again!', date:'Feb 2026' },
+    { author:'Raj Patel', company:'DigitalFirst', stars:5, text:'Exceptional full-stack skills. Handled complex requirements with ease.', date:'Jan 2026' },
+  ];
+  return [];
+}
+
+function saveReviews(fid, reviews) {
+  sessionStorage.setItem('fh_reviews_' + fid, JSON.stringify(reviews));
+}
+
+function renderReviews(fid) {
+  const reviews = getReviews(fid);
+  const list = document.getElementById('reviews-list');
+  const heading = document.getElementById('reviews-heading');
+  heading.textContent = 'Reviews (' + reviews.length + ')';
+
+  if (reviews.length === 0) {
+    list.innerHTML = '<p style="color:var(--muted);font-size:0.88rem;padding:0.5rem 0;">No reviews yet. Be the first to leave one!</p>';
+  } else {
+    list.innerHTML = reviews.map(r => `
+      <div class="review-item">
+        <div class="review-meta">
+          <div>
+            <span class="reviewer">${r.author}${r.company ? ' — ' + r.company : ''}</span>
+            <span class="review-date" style="display:block;color:var(--muted);font-size:0.75rem;">${r.date || ''}</span>
+          </div>
+          <span class="review-stars">${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}</span>
+        </div>
+        <p class="review-text">${r.text}</p>
+      </div>`).join('');
+  }
+
+  // Review form or login prompt
+  const formArea = document.getElementById('review-form-area');
+  if (currentUser) {
+    // Check if user already reviewed
+    const already = reviews.find(r => r.author === currentUser.name);
+    if (already) {
+      formArea.innerHTML = `<div style="color:var(--accent3);font-size:0.85rem;margin-top:1rem;padding:0.7rem 1rem;background:rgba(109,250,188,0.08);border-radius:8px;border:1px solid rgba(109,250,188,0.2);">✅ You've already reviewed this freelancer. Thank you!</div>`;
+    } else {
+      formArea.innerHTML = `
+        <div class="review-form-wrap">
+          <h6>✍️ Leave a Review</h6>
+          <div class="star-selector" id="star-selector">
+            <span onclick="setStar(1)">★</span>
+            <span onclick="setStar(2)">★</span>
+            <span onclick="setStar(3)">★</span>
+            <span onclick="setStar(4)">★</span>
+            <span onclick="setStar(5)">★</span>
+          </div>
+          <textarea class="review-textarea" id="review-text" placeholder="Share your experience working with this freelancer…"></textarea>
+          <div class="review-submit-row">
+            <button class="btn-primary" style="padding:0.6rem 1.4rem;font-size:0.88rem;" onclick="submitReview(${fid})">Submit Review</button>
+          </div>
+        </div>`;
+      selectedStar = 0;
+    }
+  } else {
+    formArea.innerHTML = `<div class="login-to-review">Want to leave a review? <a onclick="showPage('login')">Sign in</a> or <a onclick="showPage('signup')">create an account</a>.</div>`;
+  }
+}
+
+function setStar(n) {
+  selectedStar = n;
+  const stars = document.querySelectorAll('#star-selector span');
+  stars.forEach((s, i) => s.classList.toggle('active', i < n));
+}
+
+function submitReview(fid) {
+  if (!currentUser) { showToast('⚠️ Please log in first.', 'error'); return; }
+  if (selectedStar === 0) { showToast('⭐ Please select a star rating.', 'error'); return; }
+  const text = document.getElementById('review-text').value.trim();
+  if (text.length < 10) { showToast('📝 Please write at least 10 characters.', 'error'); return; }
+
+  const reviews = getReviews(fid);
+  const now = new Date();
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  reviews.unshift({
+    author: currentUser.name,
+    company: '',
+    stars: selectedStar,
+    text,
+    date: months[now.getMonth()] + ' ' + now.getFullYear()
+  });
+  saveReviews(fid, reviews);
+
+  // Update freelancer rating display
+  const avg = (reviews.reduce((s,r) => s+r.stars, 0) / reviews.length).toFixed(2);
+  document.getElementById('prof-rating-meta').textContent = '⭐ ' + avg + ' (' + reviews.length + ' reviews)';
+
+  showToast('🎉 Your review has been submitted!', 'success');
+  renderReviews(fid);
+}
+
+// ══════════════════════════════════════════════
+//  PROFILE PAGE — populate from freelancer data
+// ══════════════════════════════════════════════
+function openProfile(fid) {
+  currentFreelancerId = fid;
+  const f = freelancers.find(x => x.id === fid);
+  if (!f) return;
+  document.getElementById('prof-avatar').textContent = f.avatar;
+  document.getElementById('prof-avatar').style.background = f.color;
+  document.getElementById('prof-name').textContent = f.name;
+  document.getElementById('prof-role').textContent = f.role;
+  document.getElementById('prof-bio').textContent = f.bio;
+  document.getElementById('prof-rate').textContent = f.rate + '/hr';
+  document.getElementById('hire-btn').textContent = 'Hire ' + f.name.split(' ')[0];
+  document.getElementById('prof-skills').innerHTML = f.skills.map(s => `<span class="skill-tag">${s}</span>`).join('');
+
+  const reviews = getReviews(fid);
+  const avgRating = reviews.length ? (reviews.reduce((s,r)=>s+r.stars,0)/reviews.length).toFixed(2) : f.rating;
+  document.getElementById('prof-rating-meta').textContent = '⭐ ' + avgRating + ' (' + reviews.length + ' reviews)';
+
+  showPage('profile');
+  renderReviews(fid);
+}
+
+// ══════════════════════════════════════════════
+//  CARD RENDERING
+// ══════════════════════════════════════════════
+function createCard(f) {
+  const reviews = getReviews(f.id);
+  const avg = reviews.length ? (reviews.reduce((s,r)=>s+r.stars,0)/reviews.length).toFixed(2) : f.rating;
+  return `<div class="freelancer-card" onclick="openProfile(${f.id})">
+    <div class="fc-top">
+      <div class="avatar" style="background:${f.color}">${f.avatar}</div>
+      <div class="fc-info">
+        <h4>${f.name}</h4>
+        <div class="role">${f.role}</div>
+        <span class="badge badge-${f.badge}">${f.badge === 'pro' ? '✦ Pro' : '🌱 Rising'}</span>
+      </div>
+    </div>
+    <p class="fc-bio">${f.bio}</p>
+    <div class="fc-skills">${f.skills.slice(0,3).map(s=>`<span class="skill-tag">${s}</span>`).join('')}</div>
+    <div class="fc-footer">
+      <div class="rating"><span class="stars">★</span> ${avg} <span style="color:var(--muted)">(${reviews.length || f.reviews})</span></div>
+      <div class="rate">${f.rate}<span>/hr</span></div>
+    </div>
+  </div>`;
+}
+
+function renderHomeFreelancers() {
+  document.getElementById('home-freelancers').innerHTML = freelancers.map(f => createCard(f)).join('');
+}
+
+function renderBrowse() {
+  const q = (document.getElementById('search-input')?.value || '').toLowerCase();
+  const cat = document.getElementById('cat-filter')?.value || '';
+  const sort = document.getElementById('sort-filter')?.value || '';
+  let filtered = freelancers.filter(f =>
+    (!q || f.name.toLowerCase().includes(q) || f.role.toLowerCase().includes(q) || f.skills.some(s => s.toLowerCase().includes(q))) &&
+    (!cat || f.category === cat)
+  );
+  if (sort === 'Lowest Rate') filtered = [...filtered].sort((a,b) => a.rateNum - b.rateNum);
+  else if (sort === 'Highest Rate') filtered = [...filtered].sort((a,b) => b.rateNum - a.rateNum);
+  document.getElementById('browse-results').innerHTML = filtered.length
+    ? filtered.map(f => createCard(f)).join('')
+    : '<p style="color:var(--muted);padding:2rem;">No freelancers found. Try a different search.</p>';
+}
+
+function filterCards() { renderBrowse(); }
+
+function renderDashRec() {
+  const el = document.getElementById('dash-recommended');
+  if (!el) return;
+  el.innerHTML = freelancers.slice(0,3).map(f => `
+    <div class="job-row" onclick="openProfile(${f.id})" style="cursor:pointer;">
+      <div style="display:flex;align-items:center;gap:0.8rem;">
+        <div class="avatar" style="background:${f.color};width:36px;height:36px;border-radius:8px;font-size:0.85rem;">${f.avatar}</div>
+        <div><div class="job-title">${f.name}</div><div style="color:var(--muted);font-size:0.78rem;">${f.role} · ${f.rate}/hr</div></div>
+      </div>
+      <span style="color:var(--gold);font-size:0.8rem;">★ ${f.rating}</span>
+    </div>`).join('');
+}
+
+// ══════════════════════════════════════════════
+//  ROUTING & UTILITIES
+// ══════════════════════════════════════════════
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  window.scrollTo(0, 0);
+  if (id === 'browse') renderBrowse();
+  if (id === 'dashboard') renderDashRec();
+  // Reset login/signup errors when navigating to them
+  if (id === 'login') { document.getElementById('login-error').style.display='none'; document.getElementById('login-email').value=''; document.getElementById('login-password').value=''; }
+  if (id === 'signup') { document.getElementById('signup-error').style.display='none'; document.getElementById('signup-success').style.display='none'; }
+}
+
+function gatedPage(id) {
+  if (!currentUser) { showToast('⚠️ Please log in to access this page.', 'error'); setTimeout(()=>showPage('login'),600); return; }
+  showPage(id);
+}
+
+function gatedAction(fn) {
+  if (!currentUser) { showToast('⚠️ Please log in first.', 'error'); setTimeout(()=>showPage('login'),600); return; }
+  fn();
+}
+
+function switchTab(el, type) {
+  el.parentElement.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function selectChip(el) {
+  el.closest('.chip-group').querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function submitJob() {
+  if (!currentUser) { showToast('⚠️ Please log in to post a job.', 'error'); setTimeout(()=>showPage('login'),600); return; }
+  const title = document.getElementById('job-title').value.trim();
+  if (!title) { showToast('⚠️ Please enter a job title.', 'error'); return; }
+  showToast('✅ Job posted successfully!', 'success');
+  setTimeout(() => showPage('dashboard'), 800);
+}
+
+let toastTimer;
+function showToast(msg, type) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'show toast-' + (type || 'success');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3200);
+}
+
+
+// ══════════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════════
+// Restore session
+const saved = sessionStorage.getItem('fh_loggedIn');
+if (saved) { try { currentUser = JSON.parse(saved); updateNavForUser(); } catch(e){} }
+
+renderHomeFreelancers();</script>
+</body>
+</html>
